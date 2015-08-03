@@ -31,7 +31,7 @@ our $NUM_DESCRIPTION_PARTS = 5;
 
 use Class::XSAccessor
     accessors => {
-        (map { $_ => $_ } 
+        (map { $_ => $_ }
         (qw(
             filename
             tags
@@ -74,7 +74,7 @@ sub _init
 
     if (@{$self->description_parts()} != $NUM_DESCRIPTION_PARTS)
     {
-        die ("Incorrect number of description parts - " 
+        die ("Incorrect number of description parts - "
             . scalar(@{$self->description_parts()}) . "!"
         );
     }
@@ -103,7 +103,7 @@ use Wx::Event qw(EVT_LISTBOX_DCLICK);
 
 use Class::XSAccessor
     accessors => {
-        (map { $_ => $_ } 
+        (map { $_ => $_ }
         (qw(
             _common_tags
             _photo_files
@@ -125,7 +125,7 @@ sub _read_photos {
     $self->_common_tags($yaml->{'common_tags'});
 
     $self->_photo_files(
-        [ map { 
+        [ map {
             Flickr::WxPerlUploader::Photo->new(
                 $_,
             )
@@ -149,7 +149,7 @@ sub _save
 {
     my $self = shift;
 
-    DumpFile($filename, 
+    DumpFile($filename,
         {
             common_tags => $self->_common_tags(),
             files =>
@@ -186,7 +186,7 @@ sub OnInit
             return $self->_save();
         }
     );
-    
+
     my $exit_item = $file_menu->Append(Wx::wxID_EXIT, Wx::gettext("E&xit"));
 
     Wx::Event::EVT_MENU(
@@ -203,7 +203,7 @@ sub OnInit
                     (Wx::wxOK | Wx::wxCANCEL),
                     $frame,
                 );
-                
+
                 if ($verdict == Wx::wxCANCEL)
                 {
                     return;
@@ -226,7 +226,7 @@ sub OnInit
         -1,
         wxDefaultPosition(),
         wxDefaultSize(),
-        [ 
+        [
             map { $_->filename() } @{$self->_photo_files()}
         ],
     );
@@ -245,7 +245,7 @@ sub OnInit
 
 
     my $title_box = Wx::TextCtrl->new(
-        $frame, -1, "", 
+        $frame, -1, "",
         Wx::wxDefaultPosition,
         Wx::wxDefaultSize,
         Wx::wxTE_PROCESS_ENTER
@@ -263,7 +263,7 @@ sub OnInit
 
     $self->{_prev_image} = undef;
 
-    Wx::Event::EVT_LISTBOX( $self, $frame->{list}, 
+    Wx::Event::EVT_LISTBOX( $self, $frame->{list},
         sub {
             my $list = shift;
             my $event = shift;

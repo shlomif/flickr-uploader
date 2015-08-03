@@ -1,4 +1,4 @@
-#!/usr/bin/perl 
+#!/usr/bin/perl
 # Copyright (c) 2009 Shlomi Fish
 #
 # Permission is hereby granted, free of charge, to any person

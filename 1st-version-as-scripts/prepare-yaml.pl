@@ -1,4 +1,4 @@
-#!/usr/bin/perl 
+#!/usr/bin/perl
 # Copyright (c) 2009 Shlomi Fish
 #
 # Permission is hereby granted, free of charge, to any person
@@ -49,7 +49,7 @@ YAML::XS::DumpFile(
                     'filename' => $_,
                     'tags' => [],
                     title => "",
-                    description_parts => 
+                    description_parts =>
                     [ map { "" } (1 .. 5) ],
                 }
             }
